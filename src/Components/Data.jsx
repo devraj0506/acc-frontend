@@ -18,7 +18,7 @@ useEffect(() => {
             
           try {
            
-            const data  = await axios.get(`http://localhost:5000/${name}`);
+            const data  = await axios.get(`https://acc-backend-done.herokuapp.com/${name}`);
             setDat(data.data);
         
             // setDocument(data.docs.pdf);

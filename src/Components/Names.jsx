@@ -11,7 +11,7 @@ function Names() {
             
           try {
            
-            const data  = await axios.get('http://localhost:5000/');
+            const data  = await axios.get('https://acc-backend-done.herokuapp.com/');
             setNameData(data.data);
         
           
