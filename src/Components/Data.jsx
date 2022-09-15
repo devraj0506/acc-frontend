@@ -9,7 +9,8 @@ const [dat,setDat] = useState([])
 const [upper,setUpper] = useState()
 const [lower,setLower] = useState()
 
-let night,day,totalquan,totalfat,totalsnf,avgfat,avgsnf,totalquannight,totalfatnight,totalsnfnight
+
+  let night, day, totalquan, totalfat, totalsnf, avgfat, avgsnf, totalquannight, totalfatnight, totalsnfnight, avgfatbight, avgsnfnight, lengthnight, lengthday
   const {name} = useParams()
   console.log(name)
 useEffect(() => {
@@ -53,18 +54,93 @@ useEffect(() => {
   
   console.log(day)
 
-   totalquan=day.reduce((total,currentItem) =>  total = total + currentItem.quantity , 0 );
-   totalfat=day.reduce((total,currentItem) =>  total = total + currentItem.fat , 0 );
-   totalsnf=day.reduce((total,currentItem) =>  total = total + currentItem.spl , 0 );
-   totalsnfnight=night.reduce((total,currentItem) =>  total = total + currentItem.spl , 0 );
-   totalfatnight=night.reduce((total,currentItem) =>  total = total + currentItem.fat , 0 );
-   totalquannight=night.reduce((total,currentItem) =>  total = total + currentItem.quantity , 0 );
+  totalquan = day.filter(user => {
+    if (!upper || !lower) {
+      return user
+    }
+    else if (lower <= user.date && user.date <= upper) {
+      return user
+    }
+  }).reduce((total,currentItem) =>  total = total + currentItem.quantity , 0 );
+
+
+  totalfat = day.filter(user => {
+    if (!upper || !lower) {
+      return user
+    }
+    else if (lower <= user.date && user.date <= upper) {
+      return user
+    }
+  }).reduce((total,currentItem) =>  total = total + currentItem.fat , 0 );
+
+
+  totalsnf = day.filter(user => {
+    if (!upper || !lower) {
+      return user
+    }
+    else if (lower <= user.date && user.date <= upper) {
+      return user
+    }
+  }).reduce((total,currentItem) =>  total = total + currentItem.spl , 0 );
+
+
+  totalsnfnight = night.filter(user => {
+    if (!upper || !lower) {
+      return user
+    }
+    else if (lower <= user.date && user.date <= upper) {
+      return user
+    }
+  }).reduce((total,currentItem) =>  total = total + currentItem.spl , 0 );
+
+
+  totalfatnight = night.filter(user => {
+    if (!upper || !lower) {
+      return user
+    }
+    else if (lower <= user.date && user.date <= upper) {
+      return user
+    }
+  }).reduce((total,currentItem) =>  total = total + currentItem.fat , 0 );
+  
+  totalquannight = night.filter(user => {
+    if (!upper || !lower) {
+      return user
+    }
+    else if (lower <= user.date && user.date <= upper) {
+      return user
+    }
+  }).reduce((total,currentItem) =>  total = total + currentItem.quantity , 0 );
+
+
+  lengthday = day.filter(user => {
+    if (!upper || !lower) {
+      return user
+    }
+    else if (lower <= user.date && user.date <= upper) {
+      return user
+    }
+  }).length
+
+  lengthnight = night.filter(user => {
+    if (!upper || !lower) {
+      return user
+    }
+    else if (lower <= user.date && user.date <= upper) {
+      return user
+    }
+  }).length
+
+
+
   console.log(`totsl is ${totalquan}`)
   console.log(`totsl is ${totalfat/day.length}`)
   console.log(`totsl is ${totalsnf/day.length}`)
 
-avgfat = totalfat/day.length
-avgsnf = totalsnf/day.length
+avgfat = totalfat/lengthday
+avgsnf = totalsnf/lengthday
+avgfatbight=totalfatnight/lengthnight
+avgsnfnight=totalsnfnight/lengthnight
 
   return (
     <>
@@ -155,8 +231,8 @@ avgsnf = totalsnf/day.length
       <td>TOTAL</td>
       <td>{totalquannight}</td>
 
-      <td>{totalfatnight/night.length}</td>
-      <td>{totalsnfnight/night.length}</td>
+      <td>{avgfatbight}</td>
+      <td>{avgsnfnight}</td>
       </tr>
       </tbody>
 
