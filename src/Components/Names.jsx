@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 
 function Names() {
     const [nameData,setNameData] = useState()
+    const milkData = localStorage.getItem('milkData')
+ 
+   
+
 
     useEffect(() => {
       
@@ -26,13 +30,16 @@ function Names() {
         fetch();
       }, []);
 
+      console.table(milkData)
+
   return (
     <>
-    <div>
-        {nameData && nameData.map((entry)=>(
-            <div>
-            <Link to={`/data/${entry.value}`}>{entry.name}</Link>
-            </div>
+    <div className='name-list'>
+        {nameData && (nameData.map((entry)=>(
+            <div className='name-item'>
+            <Link className='name-link' to={`/data/${entry._id}`}>{entry.name}</Link>
+            
+            </div>)
         ))}
         </div>    
     </>

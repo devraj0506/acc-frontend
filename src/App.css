@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,58 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+@import url("https://cdn.syncfusion.com/ej2/bootstrap5.css");
+
+.App,
+#changeBtn {
+  margin: 2%;
+}
+
+.dataCon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: center;
+  text-align: center;
+  margin: 50px 0px;
+}
+
+.names-btn{
+  margin: 20px 0px;
+  background-color: rgb(77, 138, 253);
+}
+
+.add-name-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.add-name{
+  margin-bottom: 15px;
+}
+
+.name-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.name-link{
+  text-decoration: none;
+  font-weight: 600;
+      text-decoration: none;
+        font-weight: 600;
+        border: 2px solid black;
+        padding: 8px 25px;
+        border-radius: 12px;
+        color: black;
+}
+
+.name-item{
+margin: 30px 0px;
+  
 }

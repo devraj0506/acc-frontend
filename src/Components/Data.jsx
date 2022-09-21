@@ -232,8 +232,15 @@ avgsnfnight=totalsnfnight/lengthnight
       <td>{totalquannight}</td>
 
       <td>{avgfatbight}</td>
-      <td>{avgsnfnight}</td>
+      <td contentEditable='true'>{avgsnfnight}</td>
       </tr>
+          <tr>
+            <td>TOTAL AMOUNT</td>
+            <td contentEditable='true'>{totalquannight}</td>
+
+            <td>{avgfatbight}</td>
+            <td contentEditable='true'>{avgsnfnight}</td>
+          </tr>
       </tbody>
 
      
