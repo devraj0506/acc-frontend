@@ -53,7 +53,7 @@ console.log("this is here")
       .then((response) => {
         console.log(response);
         alert("added to database")
-        // window.location.reload()
+        window.location.reload()
       })
       .catch((error) => {
         console.log(error.response.data);
