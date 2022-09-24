@@ -17,7 +17,7 @@ const bill = useRef()
 const {id} = useParams()
 const allData = JSON.parse(localStorage.getItem('milkData'))
 // const AllData = JSON.parse(localStorage.getItem('milkData'))
-    let CustName, usefulData, totalMQuan, totalEQuan, totalQuan, totalMFat, totalEFat, totalFat, totalMSnf, totalESnf, totalsnf,MavgFat,EavgFat,avgFat,EavgSnf,MavgSnf,avgSnf,MzeroFat=0,MzeroSnf=0,EzeroFat=0,EzeroSnf=0
+    let CustName, usefulData, totalMQuan, totalEQuan, totalQuan, totalMFat, totalEFat, totalFat, totalMSnf, totalESnf, totalsnf, MavgFat, EavgFat, avgFat, EavgSnf, MavgSnf, avgSnf, MzeroFat = 0, MzeroSnf = 0, EzeroFat = 0, EzeroSnf = 0,cmilkSnf, CMilkQuan
 
 useEffect(() => {
     const fetch = async ()=>{
@@ -25,19 +25,19 @@ useEffect(() => {
             const Data = await axios.get(`https://acc-backend-done.herokuapp.com/name/${id}`)
             setCustomer(Data.data)
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
     fetch()
 
 }, []);
-console.log(customer)
-console.log(allData)
+// console.log(customer)
+// console.log(allData)
 
 if (customer) {
     CustName  = customer.name
-    console.log(CustName)
+    // console.log(CustName)
     usefulData = allData.filter((customerData)=>{
     return customerData.Name === CustName
 })
@@ -48,6 +48,18 @@ if (customer) {
     totalMSnf = usefulData.reduce((total, currentItem) => total = total + currentItem.m_snf, 0);
     totalESnf = usefulData.reduce((total, currentItem) => total = total + currentItem.e_snf, 0);
     totalQuan = totalEQuan + totalMQuan
+
+    const McMilk = usefulData.filter((cm)=>{
+        if(cm.m_fat===0 && cm.m_snf !== 0){
+            return cm
+        }
+    })
+
+    const EcMilk = usefulData.filter((cm)=>{
+        if(cm.e_fat===0 && cm.e_snf !== 0){
+            return cm
+        }
+    })
 
     const zeroFatM=usefulData.filter((zero)=>{
         if (zero.m_fat === 0){
@@ -86,6 +98,9 @@ if (customer) {
     if (zeroSnfE) {
         EzeroSnf = zeroSnfE.length
     }
+
+    // console.log(EcMilk)
+    // console.log(McMilk)
    
     MavgFat = totalMFat / (usefulData.length - MzeroFat)
     EavgFat = totalEFat / (usefulData.length - EzeroFat)
@@ -93,10 +108,11 @@ if (customer) {
     EavgSnf = totalESnf / (usefulData.length - EzeroSnf)
     avgFat = (MavgFat+EavgFat)/2
     avgSnf = (MavgSnf+EavgSnf)/2
+    CMilkQuan = EcMilk.reduce((total, currentItem) => total = total + currentItem.e_quantity, 0) + McMilk.reduce((total, currentItem) => total = total + currentItem.m_quantity, 0);
     
-    
+    cmilkSnf = (EcMilk.reduce((total, currentItem) => total = total + currentItem.e_snf, 0) + McMilk.reduce((total, currentItem) => total = total + currentItem.m_snf, 0))/(EcMilk.length + McMilk.length)
 }
-console.table(usefulData)
+// console.table(usefulData)
 
   return (
    <>
@@ -154,21 +170,28 @@ console.table(usefulData)
 
             </table> </>)}
             {customer && (<>
-<div ref={bill}>
+<div className='bill' ref={bill}>
               <h2>{customer.name}</h2>
               <h2>{customer.location}</h2>
           <table border="1" width="100%" bgcolor='white'>
                     <tr>
                         <td>TOTAL</td>
                         <td>Total Quantity</td>
+                        <td>Total Cream Milk</td>
+                        <td>Total Taza Milk</td>
+
                         <td>Total Fat</td>
                         <td>Total snf</td>
+                        <td>Cream Milk snf</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>{totalQuan}</td>
+                        <td>{CMilkQuan}</td>
+                        <td>{totalQuan-CMilkQuan}</td>
                         <td>{avgFat}</td>
                         <td>{avgSnf}</td>
+                        <td>{cmilkSnf}</td>
                     </tr>
                     <tr>
                         <td>Amount per L</td>
@@ -182,7 +205,7 @@ console.table(usefulData)
                     </tr>
             </table>
           </div>
-          <button onClick={() => exportComponentAsJPEG(bill)}>export to image</button>
+          <button className='bill-print' onClick={() => exportComponentAsJPEG(bill)}>export to image</button>
           </>)}
    </>
   )

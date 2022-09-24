@@ -2,12 +2,16 @@ import React,{useState,useEffect} from 'react'
 import { SpreadsheetComponent, RowDirective, getFormatFromType,RowsDirective,SheetDirective,CellsDirective,CellDirective,ColumnsDirective,ColumnDirective,SheetsDirective } from '@syncfusion/ej2-react-spreadsheet';
 import axios from 'axios';
 import { AlternateEmailSharp } from '@mui/icons-material';
+import Ganeshji from './images/ganeshji.jpeg'
+import swastic from './images/swastic.png'
+import om from './images/om.png'
 
 
 function Spreadsheet() {
   const [name,setName] = useState()
+  const [filterTerm, setFilterTerm] = useState("")
   const dateFormat:string = getFormatFromType("ShortDate");
-  const days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+  const days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 
   useEffect(()=>{
     const fetch= async ()=>{
@@ -30,10 +34,31 @@ function Spreadsheet() {
 
   return (
     <div>
-      {name && (<><SpreadsheetComponent allowSave={true} saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save'>
+
+    <div className="gods">
+          <img className='god-img' src={om} alt="" />
+          <img className='god-img' src={Ganeshji} alt="" />
+          <img className='god-img' src={swastic} alt="" />
+          
+    </div>
+
+
+      
+      {name && (<>
+        {/* <select className='fns' onChange={(e) => setFilterTerm(e.target.value)}>
+          <option value="">Filter-by-route</option>
+          {name.map((entry) => (
+            <option value={entry.location}>{entry.location}</option>
+          ))}
+          </select> */}
+      <SpreadsheetComponent allowOpen={true} openUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open' allowSave={true} saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save'>
         <SheetsDirective>
+     
       {days.map((day)=>(
+
           <SheetDirective name={`day${day}`}>
+     
+
             {/* <RowsDirective>
               <RowDirective>
                 <CellsDirective>
@@ -67,7 +92,20 @@ function Spreadsheet() {
                 </CellsDirective>
               </RowDirective>
 
-              {name.map((names)=>(
+            {name.filter((loc) => {
+              if (filterTerm === "") {
+
+                return loc;
+
+              }
+              else if (loc.location.toLowerCase().includes(filterTerm.toLowerCase())) {
+
+
+                return loc;
+
+              }
+            }).map((names)=>(
+              
                 <RowDirective width={800}>
                   <CellsDirective>
                     <CellDirective width={800} value={names.name}></CellDirective>

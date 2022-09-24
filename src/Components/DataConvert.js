@@ -78,15 +78,9 @@ console.log("this is here")
      </div>
       
 
-     {/* <form id="contact" onSubmit={HandleName}>
-       <fieldset>
-       </fieldset>
-       <fieldset>
-       </fieldset>
-       <fieldset>
-       </fieldset>
-     </form> */}
+     
         <div className='add-name-form'>
+        
          <input className='add-name' value={Addname} onChange={(e) => setAddName(e.target.value)} placeholder="ADD NEW Name" type="text" tabIndex="4" required />
        <input className='add-name' value={location} onChange={(e) => setLocation(e.target.value)} placeholder="location" type="text" tabIndex="4" required />
          <button onClick={HandleName}>Submit</button>
