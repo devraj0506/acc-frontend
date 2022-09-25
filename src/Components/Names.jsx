@@ -5,6 +5,7 @@ import Modal from 'react-modal'
 
 function Names() {
     const [nameData,setNameData] = useState()
+    const [locs,setLocs] = useState()
     const [SearchTerm,setSearchTerm] = useState("")
     const [filterTerm,setFilterTerm] = useState("")
     const milkData = localStorage.getItem('milkData')
@@ -32,7 +33,27 @@ function Names() {
 
          
         };
+
+      const fetch2 = async () => {
+
+        try {
+
+          const data = await axios.get('https://acc-backend-done.herokuapp.com/location/data');
+          setLocs(data.data);
+
+
+          console.table(data.data);
+        } catch (err) {
+          console.error(err);
+
+        }
+
+
+      };
+
+        
         fetch();
+        fetch2();
       }, []);
 
 
@@ -59,12 +80,16 @@ function Names() {
     <div className='name-list'>
         <select className='fns'  onChange={(e)=>setFilterTerm(e.target.value)}>
         <option value="">Filter-by-route</option>
-      {nameData.map((entry)=>(
+
+      {locs.map((entry)=>(
         <option value={entry.location}>{entry.location}</option>
       )) }
           </select>
 
           <input className='fns' type="text" value={SearchTerm} onChange={(e)=>{setSearchTerm(e.target.value)}} placeholder='search...'/>
+
+          <button className='bill-print'><Link className='name-link' to={`/bill/${filterTerm}`}>get All Bills </Link></button>
+          <button className='bill-print'><Link className='name-link' to={`/sheet/${filterTerm}`}>get Sheet </Link></button>
 
           {nameData.filter((loc) => {
             if (filterTerm === "") {

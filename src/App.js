@@ -10,7 +10,8 @@ import Names from './Components/Names';
 import DataConvert from './Components/DataConvert';
 import Spreadsheet from './Components/Spreadsheet';
 import TotaComp from './Components/TotaComp';
-
+import AllBill from './Components/AllBill';
+import AllSheet from './Components/AllSheet';
 function App() {
 
   const [nameData, setNameData] = useState()
@@ -27,7 +28,9 @@ function App() {
         
         </>}/>
         <Route exact path='/data' element={<Names/>}/>
-        <Route exact path='/data/:id' element={<TotaComp/>}/>
+        <Route  path='/data/:id' element={<TotaComp/>}/>
+        <Route  path='/bill/:loc' element={<AllBill/>}/>
+        <Route  path='/sheet/:loc' element={<AllSheet/>}/>
       </Routes>
       </BrowserRouter>
       {/* <Form/> */}

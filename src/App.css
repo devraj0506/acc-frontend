@@ -157,3 +157,38 @@ border: 2px solid;
       font-weight: 600;
       border-radius: 9px;
 }
+
+.single-bill{
+  margin: 50px 0px;
+  border: 2px dotted black;
+}
+
+.single-bill-table{
+  font-size: 10px;
+}
+.names-sect{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.two-bill:nth-child(2n+1){
+  page-break-before: always!important;
+  /* border-bottom: 20px solid green; */
+}
+
+.fif-bill:nth-child(15n+1) {
+  page-break-before: always !important;
+  /* border-bottom: 20px solid green; */
+}
+
+.all-bill{
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+}
+
+h1{
+  text-align: center;
+}

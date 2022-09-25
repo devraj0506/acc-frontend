@@ -10,8 +10,12 @@ import om from './images/om.png'
 function Spreadsheet() {
   const [name,setName] = useState()
   const [filterTerm, setFilterTerm] = useState("")
-  const dateFormat:string = getFormatFromType("ShortDate");
+  const [date, setDate] = useState("")
+  const[locs,setLocs] = useState()
+  const dateFormat:string = getFormatFromType("Short Date");
   const days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+
+  var loc=[]
 
   useEffect(()=>{
     const fetch= async ()=>{
@@ -26,11 +30,39 @@ function Spreadsheet() {
       }
     }
 
+    const fetch2 = async () => {
+
+      try {
+
+        const data = await axios.get('https://acc-backend-done.herokuapp.com/location/data');
+        setLocs(data.data);
+
+
+        console.table(data.data);
+      } catch (err) {
+        console.error(err);
+
+      }
+
+
+    };
+
     fetch()
+    fetch2()
 
   },[])
 
-  console.log(name)
+  
+  if(name){
+    name.map((entry)=>{
+      var check = loc.find(element=>element===`${entry.location}`)
+      if(!check){
+        loc.push(entry.location)
+      }
+    })
+  }
+
+  console.log(loc)
 
   return (
     <div>
@@ -45,12 +77,16 @@ function Spreadsheet() {
 
       
       {name && (<>
-        {/* <select className='fns' onChange={(e) => setFilterTerm(e.target.value)}>
+        <select className='fns' onChange={(e) => setFilterTerm(e.target.value)}>
           <option value="">Filter-by-route</option>
-          {name.map((entry) => (
+          {locs.map((entry) => (
             <option value={entry.location}>{entry.location}</option>
           ))}
-          </select> */}
+          </select>
+
+              {/* <input type="text" className='fns' placeholder='date' value={date} onChange={(e)=>setDate(e.target.value)}/> */}
+
+
       <SpreadsheetComponent allowOpen={true} openUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open' allowSave={true} saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save'>
         <SheetsDirective>
      
@@ -110,7 +146,7 @@ function Spreadsheet() {
                   <CellsDirective>
                     <CellDirective width={800} value={names.name}></CellDirective>
                     <CellDirective width={800} value={names.location} ></CellDirective>
-                    <CellDirective width={800} format={dateFormat}></CellDirective>
+                    <CellDirective width={800} value={date} format={dateFormat}></CellDirective>
                   </CellsDirective>
                 </RowDirective>
               ))}

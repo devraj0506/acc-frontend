@@ -8,14 +8,19 @@ import { AtmOutlined } from '@mui/icons-material';
 
 
 
+
 function TotaComp() {
    
   
 const [customer,setCustomer] = useState()
 const [Amount,setAmount]  = useState(0)
 const bill = useRef()
+var Rate
+var price = 0
+var Cprice = 0
 const {id} = useParams()
 const allData = JSON.parse(localStorage.getItem('milkData'))
+const allRates = JSON.parse(localStorage.getItem('rateData'))
 // const AllData = JSON.parse(localStorage.getItem('milkData'))
     let CustName, usefulData, totalMQuan, totalEQuan, totalQuan, totalMFat, totalEFat, totalFat, totalMSnf, totalESnf, totalsnf, MavgFat, EavgFat, avgFat, EavgSnf, MavgSnf, avgSnf, MzeroFat = 0, MzeroSnf = 0, EzeroFat = 0, EzeroSnf = 0,cmilkSnf, CMilkQuan
 
@@ -99,6 +104,8 @@ if (customer) {
         EzeroSnf = zeroSnfE.length
     }
 
+    
+
     // console.log(EcMilk)
     // console.log(McMilk)
    
@@ -111,8 +118,26 @@ if (customer) {
     CMilkQuan = EcMilk.reduce((total, currentItem) => total = total + currentItem.e_quantity, 0) + McMilk.reduce((total, currentItem) => total = total + currentItem.m_quantity, 0);
     
     cmilkSnf = (EcMilk.reduce((total, currentItem) => total = total + currentItem.e_snf, 0) + McMilk.reduce((total, currentItem) => total = total + currentItem.m_snf, 0))/(EcMilk.length + McMilk.length)
+
+    Rate = allRates.filter((entity)=>{
+        if(avgFat.toFixed(1)===entity.fat.toFixed(1)){
+            return entity
+        }
+    }).filter((entity)=>{
+        if(avgSnf.toFixed(1)===entity.snf.toFixed(1)){
+            return entity
+        }
+    })
+    console.log(Rate)
+
+    Rate.map((entity)=>{
+        console.log(entity.rate)
+        price = entity.rate
+    })
 }
 // console.table(usefulData)
+
+// console.log()
 
   return (
    <>
@@ -195,13 +220,14 @@ if (customer) {
                     </tr>
                     <tr>
                         <td>Amount per L</td>
-                        <td >
-                      <input value={Amount} onChange={(e) => setAmount(e.target.value)} type="text" />
-                        </td>
+                        <td></td>
+                        <td>{Cprice}</td>
+                        <td>{price}</td>
+                      {/* <input value={Amount} onChange={(e) => setAmount(e.target.value)} type="text" /> */}
                     </tr>
                     <tr>
                         <td>Total Amount</td>
-                        <td>{totalQuan*Amount}</td>
+                        <td>{(CMilkQuan*Cprice)+((totalQuan-CMilkQuan)*price)}</td>
                     </tr>
             </table>
           </div>
