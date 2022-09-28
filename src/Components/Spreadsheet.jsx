@@ -2,9 +2,8 @@ import React,{useState,useEffect} from 'react'
 import { SpreadsheetComponent, RowDirective, getFormatFromType,RowsDirective,SheetDirective,CellsDirective,CellDirective,ColumnsDirective,ColumnDirective,SheetsDirective } from '@syncfusion/ej2-react-spreadsheet';
 import axios from 'axios';
 import { AlternateEmailSharp } from '@mui/icons-material';
-import Ganeshji from './images/ganeshji.jpeg'
-import swastic from './images/swastic.png'
-import om from './images/om.png'
+import Ganeshji from './images/49ff1932922571.5698a4cf40ba4.jpg'
+
 
 
 function Spreadsheet() {
@@ -68,9 +67,9 @@ function Spreadsheet() {
     <div>
 
     <div className="gods">
-          <img className='god-img' src={om} alt="" />
-          <img className='god-img' src={Ganeshji} alt="" />
-          <img className='god-img' src={swastic} alt="" />
+          {/* <img className='god-img' src={om} alt="" /> */}
+          <img className='god-img' width='800px' src={Ganeshji} alt="" />
+          {/* <img className='god-img' src={swastic} alt="" /> */}
           
     </div>
 
@@ -163,6 +162,8 @@ function Spreadsheet() {
       </SpreadsheetComponent>
       </>
       ) }
+
+      {/* <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxmOe3xqm9seuqC27TGAy2MLw4RhbxYyCLnTt0WUQdzD35s7A8S69cLanahj-w2N1WP6Lz9IcPVuje/pubhtml?widget=true&amp;headers=true"></iframe> */}
     </div>
   )
 }

@@ -145,7 +145,7 @@ function Row(props) {
                 <div className='bill' ref={bill}>
                 
 
-                    <table className='single-bill-table' border="1" width="100%" bgcolor='white'>
+                    <table className='single-bill-table2' border="1" width="100%" bgcolor='white'>
                         <tr>
                             <td>Name</td>
                             <td>Total Quantity</td>
@@ -155,6 +155,9 @@ function Row(props) {
                             <td>Total Fat</td>
                             <td>Total snf</td>
                             <td>Cream Milk snf</td>
+                            <td>Cream per L</td>
+                            <td>Taza per L</td>
+                            <td>Total Amount</td>
                         </tr>
                         <tr>
                             <td>{customer.name}</td>
@@ -164,18 +167,11 @@ function Row(props) {
                             <td>{avgFat}</td>
                             <td>{avgSnf}</td>
                             <td>{cmilkSnf}</td>
-                        </tr>
-                        <tr>
-                            <td>Amount per L</td>
-                            <td></td>
                             <td>{Cprice}</td>
                             <td>{price}</td>
-                            {/* <input value={Amount} onChange={(e) => setAmount(e.target.value)} type="text" /> */}
-                        </tr>
-                        <tr>
-                            <td>Total Amount</td>
                             <td>{(CMilkQuan * Cprice) + ((totalQuan - CMilkQuan) * price)}</td>
                         </tr>
+                       
                     </table>
                 </div>
                 {/* <button className='bill-print' onClick={() => exportComponentAsJPEG(bill)}>export to image</button> */}

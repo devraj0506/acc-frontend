@@ -177,7 +177,7 @@ border: 2px solid;
   /* border-bottom: 20px solid green; */
 }
 
-.fif-bill:nth-child(15n+1) {
+.fif-bill:nth-child(35n+1) {
   page-break-before: always !important;
   /* border-bottom: 20px solid green; */
 }
@@ -191,4 +191,14 @@ border: 2px solid;
 
 h1{
   text-align: center;
+}
+
+.single-bill-table2{
+  font-size: 7px;
+}
+
+.shree-img{
+  height: 100px;
+  display: flex;
+  margin: auto;
 }

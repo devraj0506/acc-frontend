@@ -10,6 +10,7 @@ import htmlToPdfmake from 'html-to-pdfmake';
 import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 import { useReactToPrint } from 'react-to-print';
 import SingleRow from './SingleRow'
+import jaishree from './images/49ff1932922571.5698a4cf40ba4.jpg'
 
 
 
@@ -94,6 +95,7 @@ function AllSheet() {
                     Print
                 </button>
                 <div className='bills' ref={container}>
+                <img src={jaishree} className='shree-img' alt="" />
                 <h1>{loc}</h1>
                     {usefulData.map((entity) => (
 

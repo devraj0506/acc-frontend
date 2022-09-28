@@ -2,6 +2,7 @@ body {
     font-family: 'Bebas Neue', cursive;
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 .et_pb_contact_form_label {
@@ -109,4 +110,160 @@ label[for="et_pb_contact_brand_file_request_0"] {
 
 .file_names {
     text-align: center;
+}
+.input-feild{
+    /* width: 100%; */
+        padding: 10px 0;
+        font-size: 16px;
+        color: #c46507;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #c46507;
+        outline: none;
+        background: transparent;
+}
+
+
+
+.btn8{
+    position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #c46507;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: .5s;
+        margin-top: 40px;
+        margin-bottom: 50px;
+        letter-spacing: 4px;
+        border: 0px;
+}
+.btn8:hover{
+    background: #c46507;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #c46507,
+            0 0 25px #c46507,
+            0 0 50px #c46507,
+            0 0 100px #c46507;
+}
+.btn8 span{
+    position: absolute;
+        display: block;
+}
+.btn8 span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c46507);
+    animation: btn-anim1 1s linear infinite;
+    
+}
+
+@keyframes btn-anim1 {
+    0% {
+        left: -100%;
+    }
+
+    50%,
+    100% {
+        left: 100%;
+    }
+}
+
+.btn8 span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #c46507);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+    0% {
+        top: -100%;
+    }
+
+    50%,
+    100% {
+        top: 100%;
+    }
+}
+
+.btn8 span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #c46507);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+    0% {
+        right: -100%;
+    }
+
+    50%,
+    100% {
+        right: 100%;
+    }
+}
+
+.btn8 span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #c46507);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+    0% {
+        bottom: -100%;
+    }
+
+    50%,
+    100% {
+        bottom: 100%;
+    }
+}
+
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+/* 1 */
+.btn-1 {
+    background: rgb(131, 62, 6);
+    background: linear-gradient(0deg, rgb(131, 69, 6) 0%, rgb(180, 113, 12) 100%);
+    border: none;
+}
+
+.btn-1:hover {
+    background: rgb(255, 162, 0);
+    background: linear-gradient(0deg, rgb(255, 196, 0) 0%, rgb(251, 122, 2) 100%);
 }
