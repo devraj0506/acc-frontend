@@ -76,7 +76,7 @@ function Names() {
 
   return (
     <>
-      {nameData && (
+      {locs && nameData && (
     <div className='name-list'>
         <select className='fns'  onChange={(e)=>setFilterTerm(e.target.value)}>
         <option value="">Filter-by-route</option>

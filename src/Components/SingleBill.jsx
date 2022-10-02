@@ -214,9 +214,9 @@ function SingleBill(props) {
                             <td>{totalQuan}</td>
                             <td>{CMilkQuan}</td>
                             <td>{totalQuan - CMilkQuan}</td>
-                            <td>{avgFat}</td>
-                            <td>{avgSnf}</td>
-                            <td>{cmilkSnf}</td>
+                            <td>{avgFat+'0'}</td>
+                            <td>{avgSnf+'0'}</td>
+                            <td>{cmilkSnf+'0'}</td>
                         </tr>
                         <tr>
                             <td>Amount per L</td>

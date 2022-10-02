@@ -11,7 +11,7 @@ function Spreadsheet() {
   const [filterTerm, setFilterTerm] = useState("")
   const [date, setDate] = useState("")
   const[locs,setLocs] = useState()
-  const dateFormat:string = getFormatFromType("Short Date");
+  const dateFormat = getFormatFromType("Short Date");
   const days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 
   var loc=[]
@@ -75,7 +75,7 @@ function Spreadsheet() {
 
 
       
-      {name && (<>
+      {locs && (<>
         <select className='fns' onChange={(e) => setFilterTerm(e.target.value)}>
           <option value="">Filter-by-route</option>
           {locs.map((entry) => (
@@ -86,7 +86,7 @@ function Spreadsheet() {
               {/* <input type="text" className='fns' placeholder='date' value={date} onChange={(e)=>setDate(e.target.value)}/> */}
 
 
-      <SpreadsheetComponent allowOpen={true} openUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open' allowSave={true} saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save'>
+      {name && (<SpreadsheetComponent allowOpen={true} openUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open' allowSave={true} saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save'>
         <SheetsDirective>
      
       {days.map((day)=>(
@@ -159,7 +159,7 @@ function Spreadsheet() {
           </SheetDirective>
     )) }
         </SheetsDirective>
-      </SpreadsheetComponent>
+      </SpreadsheetComponent>)}
       </>
       ) }
 
