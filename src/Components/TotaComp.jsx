@@ -214,9 +214,9 @@ if (customer) {
                         <td>{totalQuan}</td>
                         <td>{CMilkQuan}</td>
                         <td>{totalQuan-CMilkQuan}</td>
-                        <td>{avgFat}</td>
-                        <td>{avgSnf}</td>
-                        <td>{cmilkSnf}</td>
+                        <td>{Number(avgFat).toFixed(2)}</td>
+                        <td>{Number(avgSnf).toFixed(2)}</td>
+                        <td>{Number(cmilkSnf).toFixed(2)}</td>
                     </tr>
                     <tr>
                         <td>Amount per L</td>
