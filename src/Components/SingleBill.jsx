@@ -108,15 +108,15 @@ function SingleBill(props) {
         // console.log(EcMilk)
         // console.log(McMilk)
 
-        MavgFat = totalMFat / (usefulData.length - MzeroFat)
-        EavgFat = totalEFat / (usefulData.length - EzeroFat)
-        MavgSnf = totalMSnf / (usefulData.length - MzeroSnf)
-        EavgSnf = totalESnf / (usefulData.length - EzeroSnf)
-        avgFat = (MavgFat + EavgFat) / 2
-        avgSnf = (MavgSnf + EavgSnf) / 2
+        MavgFat = (totalMFat / (usefulData.length - MzeroFat)) || 0
+        EavgFat = (totalEFat / (usefulData.length - EzeroFat)) || 0
+        MavgSnf = (totalMSnf / (usefulData.length - MzeroSnf)) || 0
+        EavgSnf = (totalESnf / (usefulData.length - EzeroSnf)) || 0
+        avgFat = ((MavgFat + EavgFat) / 2) || 0    
+        avgSnf = ((MavgSnf + EavgSnf) / 2) || 0
         CMilkQuan = EcMilk.reduce((total, currentItem) => total = total + currentItem.e_quantity, 0) + McMilk.reduce((total, currentItem) => total = total + currentItem.m_quantity, 0);
 
-        cmilkSnf = (EcMilk.reduce((total, currentItem) => total = total + currentItem.e_snf, 0) + McMilk.reduce((total, currentItem) => total = total + currentItem.m_snf, 0)) / (EcMilk.length + McMilk.length)
+        cmilkSnf = ((EcMilk.reduce((total, currentItem) => total = total + currentItem.e_snf, 0) + McMilk.reduce((total, currentItem) => total = total + currentItem.m_snf, 0)) / (EcMilk.length + McMilk.length)) || 0
 
         Rate = allRates.filter((entity) => {
             if (avgFat.toFixed(1) === entity.fat.toFixed(1)) {
@@ -185,11 +185,11 @@ function SingleBill(props) {
                                 <td>TOTAL</td>
 
                                 <td>{totalMQuan}</td>
-                                <td>{MavgFat}</td>
-                                <td>{MavgSnf}</td>
+                                <td>{(Number(MavgFat.toFixed(1)).toFixed(2)) || 0}</td>
+                                <td>{(Number(MavgSnf.toFixed(1)).toFixed(2)) || 0}</td>
                                 <td>{totalEQuan}</td>
-                                <td>{EavgFat}</td>
-                                <td>{EavgSnf}</td>
+                                <td>{(Number(EavgFat.toFixed(1)).toFixed(2)) || 0 }</td>
+                                <td>{(Number(EavgSnf.toFixed(1)).toFixed(2)) || 0}</td>
                             </tr>
                         </tfoot>
 
@@ -214,9 +214,9 @@ function SingleBill(props) {
                             <td>{totalQuan}</td>
                             <td>{CMilkQuan}</td>
                             <td>{totalQuan - CMilkQuan}</td>
-                            <td>{Number(avgFat).toFixed(2)}</td>
-                            <td>{Number(avgSnf).toFixed(2)}</td>
-                            <td>{Number(cmilkSnf).toFixed(2)}</td>
+                            <td>{(Number(avgFat.toFixed(1)).toFixed(2)) || 0}</td>
+                            <td>{(Number(avgSnf.toFixed(1)).toFixed(2)) || 0}</td>
+                            <td>{(Number(cmilkSnf.toFixed(1)).toFixed(2)) || 0}</td>
                         </tr>
                         <tr>
                             <td>Amount per L</td>

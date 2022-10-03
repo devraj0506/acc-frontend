@@ -112,11 +112,11 @@ function Row(props) {
         EavgFat = totalEFat / (usefulData.length - EzeroFat)
         MavgSnf = totalMSnf / (usefulData.length - MzeroSnf)
         EavgSnf = totalESnf / (usefulData.length - EzeroSnf)
-        avgFat = (MavgFat + EavgFat) / 2
-        avgSnf = (MavgSnf + EavgSnf) / 2
+        avgFat = ((MavgFat + EavgFat) / 2) || 0
+        avgSnf = ((MavgSnf + EavgSnf) / 2)|| 0
         CMilkQuan = EcMilk.reduce((total, currentItem) => total = total + currentItem.e_quantity, 0) + McMilk.reduce((total, currentItem) => total = total + currentItem.m_quantity, 0);
 
-        cmilkSnf = (EcMilk.reduce((total, currentItem) => total = total + currentItem.e_snf, 0) + McMilk.reduce((total, currentItem) => total = total + currentItem.m_snf, 0)) / (EcMilk.length + McMilk.length)
+        cmilkSnf = ((EcMilk.reduce((total, currentItem) => total = total + currentItem.e_snf, 0) + McMilk.reduce((total, currentItem) => total = total + currentItem.m_snf, 0)) / (EcMilk.length + McMilk.length)) || 0
 
         Rate = allRates.filter((entity) => {
             if (avgFat.toFixed(1) === entity.fat.toFixed(1)) {
@@ -169,7 +169,7 @@ function Row(props) {
                             <td>{Number(cmilkSnf).toFixed(2)}</td>
                             <td>{Cprice}</td>
                             <td>{price}</td>
-                            <td>{(CMilkQuan * Cprice) + ((totalQuan - CMilkQuan) * price)}</td>
+                            <td>{Number((CMilkQuan * Cprice) + ((totalQuan - CMilkQuan) * price).toFixed(1)).toFixed(2)}</td>
                         </tr>
                        
                     </table>
