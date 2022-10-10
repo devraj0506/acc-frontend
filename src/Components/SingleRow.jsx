@@ -148,13 +148,17 @@ function Row(props) {
     
 
   const checkRed = (fat,snf)=>{
-    if(Number(fat.toFixed(2))<3.00 || Number(snf.toFixed(2)) < 8.00){
+    if((Number(fat.toFixed(2)) < 3.00 || Number(snf.toFixed(2)) < 8.00 )){
         red = true
+         
+       
     }
+    
+    
   }
 
-  if(avgFat,avgSnf){
-    checkRed(avgFat,avgSnf)
+  if((avgFat && avgSnf )  ){
+    checkRed(avgFat,avgSnf,cmilkSnf)
   }
 
     

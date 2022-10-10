@@ -12,7 +12,7 @@ import { useReactToPrint } from 'react-to-print';
 import SingleRow from './SingleRow'
 import jaishree from './images/49ff1932922571.5698a4cf40ba4.jpg'
 // import { TotalContext } from './Context';
-// import SubTotal from './SubTotal';
+import SubTotal from './SubTotal';
 // import { AuthProvider } from './Context';
 
 
@@ -104,8 +104,8 @@ function AllSheet() {
                 <div className='bills' ref={container}>
                     <img src={jaishree} className='shree-img' alt="" />
                     <h1>{loc}</h1>
+                    <SubTotal loc={loc}/>
                     {/* <AuthProvider>
-                    <SubTotal />
                     </AuthProvider> */}
                     {usefulData.map((entity) => (
                       
