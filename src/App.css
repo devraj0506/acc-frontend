@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #282c34; 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -159,12 +159,11 @@ border: 2px solid;
 }
 
 .single-bill{
-  margin: 50px 0px;
   border: 2px dotted black;
 }
 
 .single-bill-table{
-  font-size: 10px;
+  font-size: 13px;
 }
 .names-sect{
   display: flex;
@@ -174,10 +173,11 @@ border: 2px solid;
 
 .two-bill:nth-child(2n+1){
   page-break-before: always!important;
+  margin-bottom: 40px;
   /* border-bottom: 20px solid green; */
 }
 
-.fif-bill:nth-child(32n+1) {
+.fif-bill:nth-child(23n) {
   page-break-before: always !important;
  
 }
@@ -195,11 +195,15 @@ h1{
 }
 
 .single-bill-table2{
-  font-size: 9px;
+  font-size: 13px;
 }
 
 .shree-img{
   height: 32px;
   display: flex;
   margin: auto;
+}
+
+.red{
+  background-color: rgba(255, 0, 0, 0.299);
 }

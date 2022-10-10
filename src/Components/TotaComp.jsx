@@ -143,10 +143,10 @@ if (customer) {
    <>
         {customer &&( 
           <>
-          <div>
+                  <div >
         <h1>{customer.name}</h1>
           </div>
-             <table border="1" width="100%" bgcolor='white'>
+                  <table ref={bill} border="1" width="100%" bgcolor='white'>
               <thead>
                   {/* <tr>Name: {customer.name}</tr> */}
                   {/* <tr>Day</tr> */}

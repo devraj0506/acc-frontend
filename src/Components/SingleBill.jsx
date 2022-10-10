@@ -39,6 +39,7 @@ function SingleBill(props) {
     // console.log(customer)
     // console.log(allData)
 
+
     if (customer) {
         CustName = customer.name
         // console.log(CustName)
@@ -137,6 +138,7 @@ function SingleBill(props) {
     // console.table(usefulData)
 
     // console.log()
+    const TotalAmt = (CMilkQuan * Cprice) + ((totalQuan - CMilkQuan) * price)
 
     return (
         <div className='two-bill'>
@@ -227,7 +229,7 @@ function SingleBill(props) {
                         </tr>
                         <tr>
                             <td>Total Amount</td>
-                            <td>{(CMilkQuan * Cprice) + ((totalQuan - CMilkQuan) * price)}</td>
+                            <td>{Math.round((Number(TotalAmt.toFixed(2))))}</td>
                         </tr>
                     </table>
                 </div>

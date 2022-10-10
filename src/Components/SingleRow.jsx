@@ -1,25 +1,30 @@
 import axios from 'axios';
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef,useContext } from 'react'
 // import { useParams } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 import moment from 'moment/moment';
 import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 import { AtmOutlined } from '@mui/icons-material';
-
+import { TotalContext } from './Context';
+import { AuthProvider } from './Context';
+var newStart
 
 
 function Row(props) {
 
-
+    var red = false
     const [customer, setCustomer] = useState()
     const [Amount, setAmount] = useState(0)
     const bill = useRef()
+    var amt = JSON.parse(localStorage.getItem('total'))
     var Rate
     var price = 0
     var Cprice = 0
     const { id } = props
     const allData = JSON.parse(localStorage.getItem('milkData'))
     const allRates = JSON.parse(localStorage.getItem('rateData'))
+    // const { subTotal, setSubTotal, updateSubTotal  } = useContext(TotalContext);
+    
     // const AllData = JSON.parse(localStorage.getItem('milkData'))
     let CustName, usefulData, totalMQuan, totalEQuan, totalQuan, totalMFat, totalEFat, totalFat, totalMSnf, totalESnf, totalsnf, MavgFat, EavgFat, avgFat, EavgSnf, MavgSnf, avgSnf, MzeroFat = 0, MzeroSnf = 0, EzeroFat = 0, EzeroSnf = 0, cmilkSnf, CMilkQuan
 
@@ -127,14 +132,32 @@ function Row(props) {
                 return entity
             }
         })
-        console.log(Rate)
+        // console.log(Rate)
 
         Rate.map((entity) => {
-            console.log(entity.rate)
+            // console.log(entity.rate)
             price = entity.rate
         })
     }
     // console.table(usefulData)
+    const TotalAmt = (CMilkQuan * Cprice) + ((totalQuan - CMilkQuan) * price)
+    if (TotalAmt){
+        newStart = TotalAmt  
+    }
+
+    
+
+  const checkRed = (fat,snf)=>{
+    if(Number(fat.toFixed(2))<3.00 || Number(snf.toFixed(2)) < 8.00){
+        red = true
+    }
+  }
+
+  if(avgFat,avgSnf){
+    checkRed(avgFat,avgSnf)
+  }
+
+    
 
     // console.log()
 
@@ -143,6 +166,7 @@ function Row(props) {
             
             {customer && (<div>
                 <div className='bill' ref={bill}>
+                    {/* <AuthProvider><Total tm = {TotalAmt} /></AuthProvider> */}
                 
 
                     <table className='single-bill-table2' border="1" width="100%" bgcolor='white'>
@@ -164,12 +188,12 @@ function Row(props) {
                             <td>{totalQuan}</td>
                             <td>{CMilkQuan}</td>
                             <td>{totalQuan - CMilkQuan}</td>
-                            <td>{Number(avgFat).toFixed(2)}</td>
-                            <td>{Number(avgSnf).toFixed(2)}</td>
+                            <td className={red ? 'red' : ''}>{Number(avgFat).toFixed(2)}</td>
+                            <td className={red ? 'red' : ''}>{Number(avgSnf).toFixed(2)}</td>
                             <td>{Number(cmilkSnf).toFixed(2)}</td>
                             <td>{Cprice}</td>
                             <td>{price}</td>
-                            <td>{Number((CMilkQuan * Cprice) + ((totalQuan - CMilkQuan) * price).toFixed(1)).toFixed(2)}</td>
+                            <td>{Math.round((Number(TotalAmt.toFixed(2)) )) }</td>
                         </tr>
                        
                     </table>
@@ -179,5 +203,19 @@ function Row(props) {
         </div>
     )
 }
+
+
+
+// const Total = ( props ) =>{
+//     const {tm} = props;
+//     const {updateSubTotal} = useContext(TotalContext);
+//  updateSubTotal(tm) 
+//     return(
+//         <div>
+
+//         </div>
+//     );
+// }
+
 
 export default Row

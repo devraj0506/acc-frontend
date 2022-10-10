@@ -12,6 +12,7 @@ import Spreadsheet from './Components/Spreadsheet';
 import TotaComp from './Components/TotaComp';
 import AllBill from './Components/AllBill';
 import AllSheet from './Components/AllSheet';
+// import { AuthProvider } from './Components/Context';
 function App() {
 
   const [nameData, setNameData] = useState()
@@ -20,6 +21,7 @@ function App() {
   return (
     <div>   
     {/* <DataConvert/> */}
+    {/* <AuthProvider> */}
       <BrowserRouter>
       <Routes>
         <Route exact path='/' element={<>
@@ -33,6 +35,7 @@ function App() {
         <Route  path='/sheet/:loc' element={<AllSheet/>}/>
       </Routes>
       </BrowserRouter>
+      {/* </AuthProvider> */}
       {/* <Form/> */}
       {/* <Spreadsheet/>
       <DataConvert/>

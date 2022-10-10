@@ -106,6 +106,8 @@ function DataConvert() {
   console.table(njson)
   localStorage.setItem('milkData', JSON.stringify(njson))
   localStorage.setItem('rateData', JSON.stringify(rate))
+  localStorage.setItem('total',JSON.stringify([0,0]))
+  
 
 
   const HandleName = async (e) => {

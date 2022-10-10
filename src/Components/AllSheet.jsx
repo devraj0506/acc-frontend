@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import SingleBill from './SingleBill'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
@@ -11,6 +11,9 @@ import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } fro
 import { useReactToPrint } from 'react-to-print';
 import SingleRow from './SingleRow'
 import jaishree from './images/49ff1932922571.5698a4cf40ba4.jpg'
+// import { TotalContext } from './Context';
+// import SubTotal from './SubTotal';
+// import { AuthProvider } from './Context';
 
 
 
@@ -22,7 +25,10 @@ function AllSheet() {
     const pdfExportComponent = useRef(null);
     const { loc } = useParams()
     const element = document.querySelector('.all-bill');
+    const amt = JSON.parse(localStorage.getItem('total'))
+    // const { subTotal, setSubTotal, subt } = useContext(TotalContext);
 
+    // console.log(amt)
     useEffect(() => {
 
         const fetch = async () => {
@@ -42,6 +48,7 @@ function AllSheet() {
 
         };
         fetch();
+
     }, []);
 
     if (nameData) {
@@ -95,11 +102,16 @@ function AllSheet() {
                     Print
                 </button>
                 <div className='bills' ref={container}>
-                <img src={jaishree} className='shree-img' alt="" />
-                <h1>{loc}</h1>
+                    <img src={jaishree} className='shree-img' alt="" />
+                    <h1>{loc}</h1>
+                    {/* <AuthProvider>
+                    <SubTotal />
+                    </AuthProvider> */}
                     {usefulData.map((entity) => (
-
+                      
                         <SingleRow id={entity._id} />
+                        
+                        
 
                     ))}
                 </div>
