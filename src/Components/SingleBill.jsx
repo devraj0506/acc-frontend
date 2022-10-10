@@ -146,6 +146,7 @@ function SingleBill(props) {
                 <div className='single-bill'>
                     <div className='names-sect'>
                         <p>{customer.name}</p>
+                        <h1>HIMANSHU DAIRY</h1>
                         <p>{customer.location}</p>
                     </div>
                     <table className='single-bill-table' border="1" width="100%" bgcolor='white'>
