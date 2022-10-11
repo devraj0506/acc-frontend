@@ -44,30 +44,30 @@
   margin: 2%;
 }
 
-.dataCon{
+.dataCon {
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   justify-content: center;
   text-align: center;
   margin: 50px 0px;
 }
 
-.names-btn{
+.names-btn {
   margin: 20px 0px;
   background-color: rgb(77, 138, 253);
 }
 
-.add-name-form{
+.add-name-form {
   display: flex;
   flex-direction: column;
 }
 
-.add-name{
+.add-name {
   margin-bottom: 15px;
 }
 
-.name-list{
+.name-list {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,48 +75,47 @@
   justify-content: center;
 }
 
-.name-link{
+.name-link {
   text-decoration: none;
   font-weight: 600;
-      text-decoration: none;
-        font-weight: 600;
-        
-        padding: 8px 25px;
-        border-radius: 12px;
-        color: black;
-        flex: 4;
+  text-decoration: none;
+  font-weight: 600;
+
+  padding: 8px 25px;
+  border-radius: 12px;
+  color: black;
+  flex: 4;
 }
 
-.name-item{
-margin: 30px 0px;
-width: 50%;
-display: flex;
-align-items: center;
-justify-content: space-evenly;
-border: 2px solid;
-  
+.name-item {
+  margin: 30px 0px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 2px solid;
 }
 
-.fns{
+.fns {
   padding: 10px 15px;
   margin: 30px auto;
   display: flex;
 }
 
-.delete-btn{
-      background-color: #d9534f;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        flex: 1;
-        border-radius: 10px;
+.delete-btn {
+  background-color: #d9534f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  flex: 1;
+  border-radius: 10px;
 }
 .delete-btn-modal {
   background-color: #d9534f;
   color: white;
   padding: 10px 20px;
   border: none;
-  
+
   border-radius: 10px;
 }
 .cancel-btn-modal {
@@ -129,14 +128,14 @@ border: 2px solid;
   border-radius: 10px;
 }
 
-.gods{
+.gods {
   display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin: 30px 0px;
-  }
-.god-img{
-  height: 120px!important;
+  align-items: center;
+  justify-content: space-around;
+  margin: 30px 0px;
+}
+.god-img {
+  height: 120px !important;
 }
 .bill {
   display: flex;
@@ -144,66 +143,65 @@ border: 2px solid;
   align-items: center;
 }
 
-.bill-print{
-    border: none;
-      background-color: #5cb85c;
-  
-      display: flex;
-      color: white;
-      margin: 30px auto;
-      box-shadow: black 3px 4px 12px;
-     
-      padding: 10px 20px;
-      font-weight: 600;
-      border-radius: 9px;
+.bill-print {
+  border: none;
+  background-color: #5cb85c;
+
+  display: flex;
+  color: white;
+  margin: 30px auto;
+  box-shadow: black 3px 4px 12px;
+
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 9px;
 }
 
-.single-bill{
+.single-bill {
   border: 2px dotted black;
 }
 
-.single-bill-table{
+.single-bill-table {
   font-size: 12px;
 }
-.names-sect{
+.names-sect {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.two-bill:nth-child(2n+1){
-  page-break-before: always!important;
+.two-bill:nth-child(2n + 1) {
+  page-break-before: always !important;
   margin-bottom: 40px;
   /* border-bottom: 20px solid green; */
 }
 
 .fif-bill:nth-child(23n) {
   page-break-before: always !important;
- 
 }
 
-.all-bill{
+.all-bill {
   display: flex;
   flex-direction: column;
-  
+
   justify-content: center;
 }
 
-h1{
-  font-size: 15px!important;
+h1 {
+  font-size: 15px !important;
   text-align: center;
 }
 
-.single-bill-table2{
+.single-bill-table2 {
   font-size: 13px;
 }
 
-.shree-img{
+.shree-img {
   height: 32px;
   display: flex;
   margin: auto;
 }
 
-.red{
+.red {
   background-color: rgba(255, 0, 0, 0.299);
 }
