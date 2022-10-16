@@ -22,6 +22,7 @@ function Row(props) {
   var Rate;
   var price = 0;
   var Cprice = 0;
+  var Crate ;
   const { id } = props;
   const allData = JSON.parse(localStorage.getItem("milkData"));
   const allRates = JSON.parse(localStorage.getItem("rateData"));
@@ -185,6 +186,25 @@ function Row(props) {
       price = entity.rate;
     });
   }
+
+if(cmilkSnf){
+  Crate = allRates
+    .filter((entity) => {
+      if (cmilkSnf.toFixed(1) === entity.c_snf.toFixed(1)) {
+        return entity;
+      }
+    })
+if(cmilkSnf > 8.0 ){
+Cprice = 8.00
+}
+else{
+  Crate.map((entity) => {
+    Cprice = entity.c_price;
+  });
+}
+    
+}
+
 
   const TotalAmt = CMilkQuan * Cprice + (totalQuan - CMilkQuan) * price;
   if (TotalAmt) {
