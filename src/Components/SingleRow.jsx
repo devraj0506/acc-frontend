@@ -187,29 +187,11 @@ function Row(props) {
     });
   }
 
-if(cmilkSnf){
-  Crate = allRates
-    .filter((entity) => {
-      if (cmilkSnf.toFixed(1) === entity.c_snf.toFixed(1)) {
-        return entity;
-      }
-    })
-if(cmilkSnf > 8.0 ){
-Cprice = 8.00
-}
-else{
-  Crate.map((entity) => {
-    Cprice = entity.c_price;
-  });
-}
-    
-}
 
 
-  const TotalAmt = CMilkQuan * Cprice + (totalQuan - CMilkQuan) * price;
-  if (TotalAmt) {
-    newStart = TotalAmt;
-  }
+
+ 
+  
 
   const checkRed = (fat, snf) => {
     if (Number(fat.toFixed(2)) < 3.0 || Number(snf.toFixed(2)) < 8.0) {
@@ -218,13 +200,32 @@ else{
   };
 
   if (cmilkSnf) {
-    if (Number(cmilkSnf.toFixed(2)) < 8.0) {
+    if (Number(cmilkSnf.toFixed(2)) < 7.0) {
       red = true;
+    }
+    Crate = allRates
+      .filter((entity) => {
+        if (Number(cmilkSnf).toFixed(1) === Number(entity.c_snf).toFixed(1)) {
+          return entity;
+        }
+      })
+    if (cmilkSnf > 8.5) {
+      Cprice = 20.00
+    }
+    else {
+      Crate.map((entity) => {
+        Cprice = entity.c_price;
+      });
     }
   }
 
   if (avgFat && avgSnf) {
     checkRed(avgFat, avgSnf, cmilkSnf);
+  }
+
+  const TotalAmt = CMilkQuan * Cprice + (totalQuan - CMilkQuan) * price ;
+  if (TotalAmt) {
+    newStart = TotalAmt;
   }
 
   return (
