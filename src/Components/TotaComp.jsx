@@ -17,6 +17,7 @@ function TotaComp() {
   var Rate;
   var price = 0;
   var Cprice = 0;
+  var Crate
   const { id } = useParams();
   const allData = JSON.parse(localStorage.getItem("milkData"));
   const allRates = JSON.parse(localStorage.getItem("rateData"));
@@ -142,12 +143,12 @@ function TotaComp() {
     // console.log(EcMilk)
     // console.log(McMilk)
 
-    MavgFat = totalMFat / (usefulData.length - MzeroFat);
-    EavgFat = totalEFat / (usefulData.length - EzeroFat);
-    MavgSnf = totalMSnf / (usefulData.length - MzeroSnf);
-    EavgSnf = totalESnf / (usefulData.length - EzeroSnf);
-    avgFat = (MavgFat + EavgFat) / 2;
-    avgSnf = (MavgSnf + EavgSnf) / 2;
+    MavgFat = (totalMFat / (usefulData.length - MzeroFat) ) || 0;
+    EavgFat = (totalEFat / (usefulData.length - EzeroFat)) || 0;
+    MavgSnf = (totalMSnf / (usefulData.length - MzeroSnf)) || 0;
+    EavgSnf = (totalESnf / (usefulData.length - EzeroSnf)) || 0;
+    avgFat = ((MavgFat + EavgFat) / 2) || 0;
+    avgSnf = ((MavgSnf + EavgSnf) / 2) || 0;
     CMilkQuan =
       EcMilk.reduce(
         (total, currentItem) => (total = total + currentItem.e_quantity),
@@ -187,6 +188,29 @@ function TotaComp() {
       price = entity.rate;
     });
   }
+
+  if (cmilkSnf) {
+   
+    Crate = allRates
+      .filter((entity) => {
+        if (Number(cmilkSnf).toFixed(1) === Number(entity.c_snf).toFixed(1)) {
+          return entity;
+        }
+      })
+    if (cmilkSnf > 8.5) {
+      Cprice = 20.00
+    }
+    else {
+      Crate.map((entity) => {
+        Cprice = entity.c_price;
+      });
+    }
+  }
+
+  
+
+  const TotalAmt = (CMilkQuan * Cprice) + ((totalQuan - CMilkQuan) * price) ;
+  
   // console.table(usefulData)
 
   // console.log()
@@ -240,11 +264,11 @@ function TotaComp() {
                 <td>TOTAL</td>
 
                 <td>{totalMQuan}</td>
-                <td>{MavgFat}</td>
-                <td>{MavgSnf}</td>
+                <td>{MavgFat.toFixed(2)}</td>
+                <td>{MavgSnf.toFixed(2)}</td>
                 <td>{totalEQuan}</td>
-                <td>{EavgFat}</td>
-                <td>{EavgSnf}</td>
+                <td>{EavgFat.toFixed(2)}</td>
+                <td>{EavgSnf.toFixed(2)}</td>
               </tr>
             </tfoot>
           </table>{" "}
@@ -284,7 +308,7 @@ function TotaComp() {
               </tr>
               <tr>
                 <td>Total Amount</td>
-                <td>{CMilkQuan * Cprice + (totalQuan - CMilkQuan) * price}</td>
+                <td>{TotalAmt.toFixed(2)}</td>
               </tr>
             </table>
           </div>

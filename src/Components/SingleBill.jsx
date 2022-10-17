@@ -17,6 +17,7 @@ function SingleBill(props) {
   var Rate;
   var price = 0;
   var Cprice = 0;
+  var Crate
   const { id } = props;
   const allData = JSON.parse(localStorage.getItem("milkData"));
   const allRates = JSON.parse(localStorage.getItem("rateData"));
@@ -180,16 +181,40 @@ function SingleBill(props) {
           return entity;
         }
       });
-    console.log(Rate);
+    // console.log(Rate);
 
     Rate.map((entity) => {
-      console.log(entity.rate);
+      // console.log(entity.rate);
+
       price = entity.rate;
     });
   }
   // console.table(usefulData)
 
   // console.log()
+
+  if (cmilkSnf) {
+    
+    Crate = allRates
+      .filter((entity) => {
+        if (Number(cmilkSnf).toFixed(1) === Number(entity.c_snf).toFixed(1)) {
+          return entity;
+        }
+      })
+    if (cmilkSnf > 8.5) {
+      Cprice = 20.00
+    }
+    else {
+      Crate.map((entity) => {
+        Cprice = entity.c_price;
+      });
+    }
+  }
+
+  
+
+  
+  
   const TotalAmt = CMilkQuan * Cprice + (totalQuan - CMilkQuan) * price;
 
   return (

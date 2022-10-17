@@ -14,6 +14,7 @@ function SingleAmt(customer) {
   var Rate;
   var price = 0;
   var Cprice = 0;
+  var Crate
 
   const allData = JSON.parse(localStorage.getItem("milkData"));
   const allRates = JSON.parse(localStorage.getItem("rateData"));
@@ -169,6 +170,31 @@ function SingleAmt(customer) {
       });
     }
   }
+
+
+  if (cmilkSnf) {
+    
+    Crate = allRates
+      .filter((entity) => {
+        if (Number(cmilkSnf).toFixed(1) === Number(entity.c_snf).toFixed(1)) {
+          return entity;
+        }
+      })
+    if (cmilkSnf > 8.5) {
+      Cprice = 20.00
+    }
+    else {
+      Crate.map((entity) => {
+        Cprice = entity.c_price;
+      });
+    }
+  }
+
+  
+
+ 
+  
+  
   TotalAmt = Math.round(CMilkQuan * Cprice + (totalQuan - CMilkQuan) * price);
 
   // console.table(usefulData)

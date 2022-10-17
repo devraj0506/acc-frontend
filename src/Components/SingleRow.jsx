@@ -223,7 +223,7 @@ function Row(props) {
     checkRed(avgFat, avgSnf, cmilkSnf);
   }
 
-  const TotalAmt = CMilkQuan * Cprice + (totalQuan - CMilkQuan) * price ;
+  const TotalAmt = (CMilkQuan * Cprice) + ((totalQuan - CMilkQuan) * price) ;
   if (TotalAmt) {
     newStart = TotalAmt;
   }
