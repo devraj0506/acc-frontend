@@ -20,7 +20,7 @@ function DataConvert() {
     const fetch2 = async () => {
       try {
         const data = await axios.get(
-          "https://acc-backend-done.herokuapp.com/location/data"
+          "https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/location/data"
         );
         setLocs(data.data);
 
@@ -99,7 +99,7 @@ function DataConvert() {
   const HandleName = async (e) => {
     e.preventDefault();
     axios
-      .post("https://acc-backend-done.herokuapp.com/name", {
+      .post("https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/name", {
         name: Addname,
         location,
       })
@@ -117,7 +117,7 @@ function DataConvert() {
   const HandleLoc = async (e) => {
     e.preventDefault();
     axios
-      .post("https://acc-backend-done.herokuapp.com/location", {
+      .post("https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/location", {
         location: loc,
       })
       .then((response) => {

@@ -30,7 +30,7 @@ function Spreadsheet() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const data = await axios.get("https://acc-backend-done.herokuapp.com/");
+        const data = await axios.get("https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/");
         setName(data.data);
         console.log(data);
       } catch (err) {
@@ -41,7 +41,7 @@ function Spreadsheet() {
     const fetch2 = async () => {
       try {
         const data = await axios.get(
-          "https://acc-backend-done.herokuapp.com/location/data"
+          "https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/location/data"
         );
         setLocs(data.data);
 

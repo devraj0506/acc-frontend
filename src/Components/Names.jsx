@@ -23,7 +23,7 @@ function Names() {
             
           try {
            
-            const data  = await axios.get('https://acc-backend-done.herokuapp.com/');
+            const data = await axios.get('https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/');
             setNameData(data.data);
         
           
@@ -41,7 +41,7 @@ function Names() {
 
         try {
 
-          const data = await axios.get('https://acc-backend-done.herokuapp.com/location/data');
+          const data = await axios.get('https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/location/data');
           setLocs(data.data);
 
 
@@ -62,7 +62,7 @@ function Names() {
 
 
   const DeleteName = (id, e) => {
-    axios.delete(`https://acc-backend-done.herokuapp.com/${id}`)
+    axios.delete(`https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/${id}`)
       .then(response => {
         console.log(response)
         window.location.reload()

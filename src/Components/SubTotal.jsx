@@ -12,7 +12,7 @@ function SubTotal(props) {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const data = await axios.get("https://acc-backend-done.herokuapp.com/");
+        const data = await axios.get("https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/");
         setNameData(data.data);
       } catch (err) {
         console.error(err);

@@ -50,7 +50,7 @@ function TotaComp() {
     const fetch = async () => {
       try {
         const Data = await axios.get(
-          `https://acc-backend-done.herokuapp.com/name/${id}`
+          `https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/name/${id}`
         );
         setCustomer(Data.data);
       } catch (error) {

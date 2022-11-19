@@ -21,7 +21,7 @@ function Form() {
 
     const HandleName = async (e) =>{
         // e.preventDefault()
-        axios.post("https://acc-backend-done.herokuapp.com/name",{name:Addname,value:Value})
+      axios.post("https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/name",{name:Addname,value:Value})
         .then((response) => {
             console.log(response);
             alert("added to database")
@@ -36,7 +36,7 @@ function Form() {
         // e.preventDefault()
 
         if(Mquan && Mfat && Msnf && Efat && Esnf && Equan){
-            axios.post("https://acc-backend-done.herokuapp.com/",{name:name,quantity:Mquan,fat:Mfat,spl:Msnf,date:Date,dn:"day"})
+          axios.post("https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app",{name:name,quantity:Mquan,fat:Mfat,spl:Msnf,date:Date,dn:"day"})
             .then((response) => {
                 console.log(response);
                 alert("added to database")
@@ -48,7 +48,7 @@ function Form() {
               });
     
             
-            axios.post("https://acc-backend-done.herokuapp.com/",{name:name,quantity:Equan,fat:Efat,spl:Esnf,date:Date,dn:"night"})
+          axios.post("https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/",{name:name,quantity:Equan,fat:Efat,spl:Esnf,date:Date,dn:"night"})
             .then((response) => {
                 console.log(response);
                 
@@ -60,7 +60,7 @@ function Form() {
         }
 
         else if(Mquan && Mfat && Msnf && !Efat && !Esnf && !Equan){
-            axios.post("https://acc-backend-done.herokuapp.com/",{name:name,quantity:Mquan,fat:Mfat,spl:Msnf,date:Date,dn:"day"})
+          axios.post("https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/",{name:name,quantity:Mquan,fat:Mfat,spl:Msnf,date:Date,dn:"day"})
             .then((response) => {
                 console.log(response);
                 alert("added to database")
@@ -74,7 +74,7 @@ function Form() {
         }
 
         else if(!Mquan && !Mfat && !Msnf && Efat && Esnf && Equan){
-            axios.post("https://acc-backend-done.herokuapp.com/",{name:name,quantity:Equan,fat:Efat,spl:Esnf,date:Date,dn:"night"})
+          axios.post("https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app/",{name:name,quantity:Equan,fat:Efat,spl:Esnf,date:Date,dn:"night"})
             .then((response) => {
                 console.log(response);
                 
@@ -96,7 +96,7 @@ function Form() {
             
           try {
            
-            const data  = await axios.get('https://acc-backend-done.herokuapp.com/');
+            const data = await axios.get('https://backendclient-a3tq5fc1i-mohitpareek16.vercel.app');
             setNameData(data.data);
         
             // setDocument(data.docs.pdf);
