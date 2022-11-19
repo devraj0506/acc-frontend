@@ -6,12 +6,12 @@ import './App.css';
 import Data from './Components/Data';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Names from './Components/Names';
-
 import DataConvert from './Components/DataConvert';
 import Spreadsheet from './Components/Spreadsheet';
 import TotaComp from './Components/TotaComp';
 import AllBill from './Components/AllBill';
 import AllSheet from './Components/AllSheet';
+import Spinner from './Components/Spinner';
 // import { AuthProvider } from './Components/Context';
 function App() {
 
@@ -41,7 +41,7 @@ function App() {
       <DataConvert/>
      <Names/> */}
 
-      
+    {/* <Spinner/> */}
 
        </div>
   );

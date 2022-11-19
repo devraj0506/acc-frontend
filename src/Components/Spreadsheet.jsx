@@ -12,6 +12,7 @@ import {
   SheetsDirective,
 } from "@syncfusion/ej2-react-spreadsheet";
 import axios from "axios";
+import Spinner from "./Spinner";
 import { AlternateEmailSharp } from "@mui/icons-material";
 import Ganeshji from "./images/49ff1932922571.5698a4cf40ba4.jpg";
 
@@ -22,6 +23,7 @@ function Spreadsheet() {
   const [locs, setLocs] = useState();
   const dateFormat = getFormatFromType("Short Date");
   const days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+  
 
   var loc = [];
 
@@ -94,8 +96,8 @@ function Spreadsheet() {
               saveUrl="https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save"
             >
               <SheetsDirective>
-                {days.map((day) => (
-                  <SheetDirective name={`day${day}`}>
+              
+                  <SheetDirective name={`milk data`}>
                     {/* <RowsDirective>
               <RowDirective>
                 <CellsDirective>
@@ -141,27 +143,30 @@ function Spreadsheet() {
                           }
                         })
                         .map((names) => (
-                          <RowDirective width={800}>
-                            <CellsDirective>
-                              <CellDirective
-                                width={800}
-                                value={names.name}
-                              ></CellDirective>
-                              <CellDirective
-                                width={800}
-                                value={names.location}
-                              ></CellDirective>
-                              <CellDirective
-                                width={800}
-                                value={date}
-                                format={dateFormat}
-                              ></CellDirective>
-                            </CellsDirective>
-                          </RowDirective>
+                          days.map((map)=>(
+                            <RowDirective width={800}>
+                              <CellsDirective>
+                                <CellDirective
+                                  width={800}
+                                  value={names.name}
+                                ></CellDirective>
+                                <CellDirective
+                                  width={800}
+                                  value={names.location}
+                                ></CellDirective>
+                                <CellDirective
+                                  width={800}
+                                  value={date}
+                                  format={dateFormat}
+                                ></CellDirective>
+                              </CellsDirective>
+                            </RowDirective>
+                          ))
+                         
                         ))}
                     </RowsDirective>
                   </SheetDirective>
-                ))}
+                
               </SheetsDirective>
             </SpreadsheetComponent>
           )}
@@ -174,3 +179,5 @@ function Spreadsheet() {
 }
 
 export default Spreadsheet;
+
+

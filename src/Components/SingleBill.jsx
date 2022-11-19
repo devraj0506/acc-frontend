@@ -312,8 +312,8 @@ function SingleBill(props) {
               <tr>
                 <td>Amount per L</td>
                 <td></td>
-                <td>{Cprice}</td>
-                <td>{price}</td>
+                <td>{Number(Cprice).toFixed(2)}</td>
+                <td>{Number(price).toFixed(2)}</td>
                 {/* <input value={Amount} onChange={(e) => setAmount(e.target.value)} type="text" /> */}
               </tr>
               <tr>

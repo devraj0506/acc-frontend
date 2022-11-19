@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal'
+import Spinner from './Spinner';
 
 function Names() {
     const [nameData,setNameData] = useState()
@@ -11,6 +12,7 @@ function Names() {
     const milkData = localStorage.getItem('milkData')
     const [delData,setDelData] = useState({"name":"ramu","location":"location"})
     const [isModal,setIsModal] = useState(false)
+    const [Loading,setLoading] = useState(true)
  
    
 
@@ -26,9 +28,10 @@ function Names() {
         
           
             console.table(data.data);
+            setLoading(false)
           } catch (err) {
             console.error(err);
-           
+           setLoading(false)
           }
 
          
@@ -76,67 +79,69 @@ function Names() {
 
   return (
     <>
-      {locs && nameData && (
-    <div className='name-list'>
-        <select className='fns'  onChange={(e)=>setFilterTerm(e.target.value)}>
-        <option value="">Filter-by-route</option>
+      {Loading ? <Spinner /> : (<>
+        {locs && nameData && (
+          <div className='name-list'>
+            <select className='fns' onChange={(e) => setFilterTerm(e.target.value)}>
+              <option value="">Filter-by-route</option>
 
-      {locs.map((entry)=>(
-        <option value={entry.location}>{entry.location}</option>
-      )) }
-          </select>
+              {locs.map((entry) => (
+                <option value={entry.location}>{entry.location}</option>
+              ))}
+            </select>
 
-          <input className='fns' type="text" value={SearchTerm} onChange={(e)=>{setSearchTerm(e.target.value)}} placeholder='search...'/>
+            <input className='fns' type="text" value={SearchTerm} onChange={(e) => { setSearchTerm(e.target.value) }} placeholder='search...' />
 
-          <button className='bill-print'><Link className='name-link' to={`/bill/${filterTerm}`}>get All Bills </Link></button>
-          <button className='bill-print'><Link className='name-link' to={`/sheet/${filterTerm}`}>get Sheet </Link></button>
+            <button className='bill-print'><Link className='name-link' to={`/bill/${filterTerm}`}>get All Bills </Link></button>
+            <button className='bill-print'><Link className='name-link' to={`/sheet/${filterTerm}`}>get Sheet </Link></button>
 
-          {nameData.filter((loc) => {
-            if (filterTerm === "") {
+            {nameData.filter((loc) => {
+              if (filterTerm === "") {
 
-              return loc;
+                return loc;
 
-            }
-            else if (loc.location.toLowerCase().includes(filterTerm.toLowerCase())) {
-
-
-              return loc;
-
-            }
-          }).filter((nam) => {
-            if (SearchTerm === "") {
-
-              return nam;
-
-            }
-            else if (nam.name.toLowerCase().includes(SearchTerm.toLowerCase())) {
+              }
+              else if (loc.location.toLowerCase().includes(filterTerm.toLowerCase())) {
 
 
-              return nam;
+                return loc;
 
-            }
-          }).map((entry)=>(
-            <div className='name-item'>
-            <Link className='name-link' to={`/data/${entry._id}`}>{entry.name}</Link>
-              <button className='delete-btn' onClick={()=>{
-                setDelData(entry)
-                setIsModal(true)
-              }}>Delete</button>
-            </div>)
-        )}
+              }
+            }).filter((nam) => {
+              if (SearchTerm === "") {
 
-          <Modal isOpen={isModal}
-            
-            contentLabel="Example Modal"
->
+                return nam;
 
-<p>Are you sure you want to delete?</p>
-<p>Name: {delData.name}</p>
-<p>Location: {delData.location}</p>
-<button className='cancel-btn-modal' onClick={()=>setIsModal(false)}>Cancel</button>
-<button className='delete-btn-modal' onClick={(e)=>DeleteName(delData._id)}>Delete</button>
-        </Modal>
-        </div>) }   
+              }
+              else if (nam.name.toLowerCase().includes(SearchTerm.toLowerCase())) {
+
+
+                return nam;
+
+              }
+            }).map((entry) => (
+              <div className='name-item'>
+                <Link className='name-link' to={`/data/${entry._id}`}>{entry.name}</Link>
+                <button className='delete-btn' onClick={() => {
+                  setDelData(entry)
+                  setIsModal(true)
+                }}>Delete</button>
+              </div>)
+            )}
+
+            <Modal isOpen={isModal}
+
+              contentLabel="Example Modal"
+            >
+
+              <p>Are you sure you want to delete?</p>
+              <p>Name: {delData.name}</p>
+              <p>Location: {delData.location}</p>
+              <button className='cancel-btn-modal' onClick={() => setIsModal(false)}>Cancel</button>
+              <button className='delete-btn-modal' onClick={(e) => DeleteName(delData._id)}>Delete</button>
+            </Modal>
+          </div>)}
+      </>)}
     </>
   )
 }

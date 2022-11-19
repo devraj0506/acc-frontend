@@ -264,8 +264,8 @@ function Row(props) {
                   {Number(avgSnf).toFixed(2)}
                 </td>
                 <td>{Number(cmilkSnf).toFixed(2)}</td>
-                <td>{Cprice}</td>
-                <td>{price}</td>
+                <td>{Number(Cprice).toFixed(2)}</td>
+                <td>{Number(price).toFixed(2)}</td>
                 <td>{Math.round(Number(TotalAmt.toFixed(2)))}</td>
               </tr>
             </table>
